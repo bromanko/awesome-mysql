@@ -1,5 +1,6 @@
 """Validate one-entry patches in disposable copies using the upstream check tools."""
 import io
+import difflib
 import json
 import os
 from pathlib import Path
@@ -43,11 +44,28 @@ def compare_links(before, after, relevant):
     after = {key: [normalized_url(url) for url in urls] for key, urls in after.items() if isinstance(urls,list)}
     relevant = [normalized_url(url) for url in relevant]
     inherited = set(before['errors']) & set(after['errors'])
-    introduced = set(after['errors']) - set(before['errors'])
+    newly_observed = set(after['errors']) - set(before['errors'])
+    # The exact patch guards restrict edits to the selected rows. A remote URL
+    # outside those rows cannot be broken by that edit; retain its fluctuation
+    # as a diagnostic while still blocking new local or unknown-scheme errors.
+    unrelated = {url for url in newly_observed - set(relevant)
+                 if urlsplit(url).scheme in {'http', 'https'}}
+    introduced = newly_observed - unrelated
     affected = set(relevant) & (set(after['errors']) | set(after['excluded']))
     unverified = set(relevant) - set(after.get('successful', []))
     return dict(passed=not (introduced or affected or unverified), unverified=sorted(unverified), introduced=sorted(introduced),
-                preexisting=sorted(inherited), affected=sorted(affected))
+                preexisting=sorted(inherited), affected=sorted(affected),
+                unrelatedFluctuations=sorted(unrelated))
+
+
+def changed_urls(before, after):
+    import ci
+    old_lines, new_lines = before.splitlines(), after.splitlines()
+    added = {line for tag, _, _, start, end in difflib.SequenceMatcher(
+        None, old_lines, new_lines, autojunk=False).get_opcodes()
+        if tag in {'insert', 'replace'} for line in new_lines[start:end]}
+    return [url for entry in ci.entries(after) if entry['line'] in added
+            for url in ci.linked_urls(entry)]
 
 
 class Validator:
@@ -114,12 +132,14 @@ class Validator:
         try:
             before_links = links(self.before['links'],self.base)
             after_links = links(after['links'],folder)
-            old_lines = {e['line'] for e in ci.entries(self.readme)}
-            relevant = [url for e in ci.entries(changed) if e['line'] not in old_lines for url in ci.linked_urls(e)]
+            relevant = changed_urls(self.readme, changed)
             result['links'] = compare_links(before_links,after_links,relevant)
             result['passed'] = result['links']['passed']
-            result['reason'] = ('Checks passed; existing unrelated link failures are listed separately.' if result['passed']
+            result['reason'] = ('Checks passed; unrelated link failures are listed separately.' if result['passed']
                                 else 'Proposed edit failed checks; held for maintainer review. See validation logs.')
+            if result['links']['unrelatedFluctuations']:
+                result['reason'] += (f" {len(result['links']['unrelatedFluctuations'])} unchanged remote link(s)"
+                                     ' fluctuated between checks; these do not block the edit.')
         except (ValueError,KeyError,TypeError):
             result['reason'] = 'Link validation incomplete; held for maintainer review.'
         return result
