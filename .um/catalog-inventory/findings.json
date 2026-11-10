@@ -1,0 +1,1366 @@
+{
+  "summary": {
+    "repository": "shlomi-noach/awesome-mysql",
+    "totalEntries": 112,
+    "completedBatches": 6,
+    "plannedBatches": 6,
+    "researched": 112,
+    "baselineEntries": 84,
+    "recommendations": 12,
+    "uncertain": 7,
+    "unavailableSnapshots": 5,
+    "recordedUsageEquivalentUsd": 7.878501,
+    "validation": "Research recommendations only; history and patch checks not run.",
+    "unresolvedKeeps": 9
+  },
+  "researchSummary": {
+    "repository": "shlomi-noach/awesome-mysql",
+    "totalEntries": 112,
+    "completedBatches": 6,
+    "plannedBatches": 6,
+    "researched": 112,
+    "baselineEntries": 89,
+    "recommendations": 12,
+    "uncertain": 6,
+    "unavailableSnapshots": 5,
+    "recordedUsageEquivalentUsd": 7.878501,
+    "validation": "Research recommendations only; history and patch checks not run."
+  },
+  "catalogSha": "27bcd81225faaef01a6cfbe00edf1f5483c86135",
+  "readmeHash": "32164431b18be910a06e9c46d312eea2ff6f4ce74b20be6111916336c50b7e3b",
+  "findings": [
+    {
+      "entry": {
+        "id": "42",
+        "name": "MySQL Explain Analyzer",
+        "url": "https://github.com/Preetam/explain-analyzer",
+        "description": "A web-based analyzer of `EXPLAIN FORMAT=JSON` output, providing comments, scalability analysis and permalinks for saved samples.",
+        "section": "Analysis",
+        "line": "- [MySQL Explain Analyzer](https://github.com/Preetam/explain-analyzer) - A web-based analyzer of `EXPLAIN FORMAT=JSON` output, providing comments, scalability analysis and permalinks for saved samples.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Features: table representation, comments about explain interpretation, experimental scalability analysis, automatic dialect detection. No saving or permalinks. Accepts MySQL `EXPLAIN FORMAT=JSON`.",
+            "url": "https://raw.githubusercontent.com/Preetam/explain-analyzer/master/README.md"
+          },
+          {
+            "observation": "'remove save button' (2021-07-23) changed js/index.js. Later commits 5e8fa4f and 3f93a06 rewrote the app in Mithril 2/TypeScript with PostgreSQL support. A grep of the current src/ for permalink/save/share/localStorage found no matches.",
+            "url": "https://github.com/Preetam/explain-analyzer/commit/7058205133faa8e014418d142fe9e87ec16e1edc"
+          },
+          {
+            "observation": "archived=false, BSD-2-Clause, pushed_at 2026-11-02, description 'MySQL and PostgreSQL JSON Explain Analyzer'.",
+            "url": "https://api.github.com/repos/Preetam/explain-analyzer"
+          }
+        ],
+        "id": "42",
+        "limitations": [
+          "Mentioning PostgreSQL support is optional and not needed for accuracy.",
+          "I did not run the web app; the absence of the feature comes from the source code and README."
+        ],
+        "newDescription": "A web-based analyzer of `EXPLAIN FORMAT=JSON` output, providing comments and scalability analysis.",
+        "newName": null,
+        "newUrl": null,
+        "reason": "Identity confirmed: Preetam/explain-analyzer, BSD-2-Clause, active as of 2026-11. The claim about 'permalinks for saved samples' is out of date. Commit 7058205 ('remove save button', 2021-07-23) removed saving. The README Features list in the current modernized release no longer includes 'Explain saving and permalinks', and the current src/ contains no save or permalink code. The other claims still hold: a web-based analyzer of MySQL `EXPLAIN FORMAT=JSON` output, comments, and experimental scalability analysis. PostgreSQL support was added, but listing it is optional."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -39,7 +39,7 @@\n - [Anemometer](https://github.com/box/Anemometer) - Box SQL slow query monitor.\n - [innodb-ruby](https://github.com/jeremycole/innodb_ruby) - A parser for InnoDB file formats, in Ruby.\n - [innotop](https://github.com/innotop/innotop) - a 'top' clone for MySQL with many features and flexibility.\n-- [MySQL Explain Analyzer](https://github.com/Preetam/explain-analyzer) - A web-based analyzer of `EXPLAIN FORMAT=JSON` output, providing comments, scalability analysis and permalinks for saved samples.\n+- [MySQL Explain Analyzer](https://github.com/Preetam/explain-analyzer) - A web-based analyzer of `EXPLAIN FORMAT=JSON` output, providing comments and scalability analysis.\n - [mysql-statsd](https://github.com/db-art/mysql-statsd) - A Python daemon to collect information from MySQL and send it via StatsD to Graphite.\n - [MySQLTuner-perl](https://github.com/major/MySQLTuner-perl) - A script that allows you to review a MySQL installation quickly and make adjustments to increase performance and stability.\n - [Prometheus](https://github.com/prometheus/prometheus)/[mysqld_exporter](https://github.com/prometheus/mysqld_exporter) - Time series database for real-time monitoring and alerting.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": {
+        "id": "42",
+        "name": "MySQL Explain Analyzer",
+        "modelAction": "update",
+        "disposition": "confirmed",
+        "recommendedAction": "update",
+        "baselineHold": true,
+        "baselineEligible": false,
+        "outreachSuitable": true,
+        "summary": "The saved-permalink claim is outdated. Current app code has analyze/example controls but no save handler or routes. Historical removal of the save feature corroborates the current implementation; an old README alone would not have been enough.",
+        "sources": [
+          {
+            "url": "https://github.com/Preetam/explain-analyzer/blob/master/README.md",
+            "observation": "Current features describe analysis, comments, scalability and dialects."
+          },
+          {
+            "url": "https://github.com/Preetam/explain-analyzer/blob/master/src/App.ts",
+            "observation": "Current application has input, parse, analyze and example-loading paths, without the former save feature."
+          },
+          {
+            "url": "https://github.com/Preetam/explain-analyzer/blob/master/src/main.ts",
+            "observation": "Mounts the application without permalink routing."
+          },
+          {
+            "url": "https://github.com/Preetam/explain-analyzer/commit/7058205133faa8e014418d142fe9e87ec16e1edc",
+            "observation": "Historical commit removes the save button and handler."
+          }
+        ],
+        "suggestedEmailWording": "MySQL Explain Analyzer is still described as saving query plans to permalinks, but the current app no longer has that feature."
+      },
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "50",
+        "name": "sql-tap",
+        "url": "https://github.com/mickamy/sql-tap",
+        "description": "Real-time SQL traffic viewer.",
+        "section": "Analysis",
+        "line": "- [sql-tap](https://github.com/mickamy/sql-tap) - Real-time SQL traffic viewer.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "HTTP 301 to api.github.com/repositories/1157577714, which resolves to full_name 'proto-tap/sql-tap', owner proto-tap, archived=false, MIT, pushed_at 2026-10-27.",
+            "url": "https://api.github.com/repos/mickamy/sql-tap"
+          },
+          {
+            "observation": "'Real-time SQL traffic viewer \u2014 proxy daemon + TUI / Web client.' Works with PostgreSQL, MySQL, or TiDB. Install: 'go install github.com/proto-tap/sql-tap@latest'. A note says it moved from mickamy/tap to proto-tap/tap.",
+            "url": "https://raw.githubusercontent.com/proto-tap/sql-tap/main/README.md"
+          }
+        ],
+        "id": "50",
+        "limitations": [
+          "The README still has a sponsor badge for github.com/sponsors/mickamy. The original author appears to remain involved, but I did not check proto-tap org membership.",
+          "Adding a TUI/web mention to the description is optional."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": "https://github.com/proto-tap/sql-tap",
+        "reason": "The listed URL github.com/mickamy/sql-tap redirects. The GitHub API returns 301 to repository id 1157577714, whose full_name is proto-tap/sql-tap. The README install instructions now use github.com/proto-tap/sql-tap and the proto-tap/tap Homebrew cask, and explicitly note the move from mickamy/tap. The name and description ('Real-time SQL traffic viewer' matches the README) remain accurate, and MySQL is a supported driver. Only the URL needs to change."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -47,7 +47,7 @@\n - [ReliaDB EXPLAIN Analyzer](https://github.com/Mughees52/mysql-explain-analyzer) - a browser-based MySQL and MariaDB EXPLAIN visualizer with issue detection, index recommendations, and query rewrites. 100% client-side.\n - [Wireshark](https://gitlab.com/wireshark/wireshark/) - a protocol analyzer that can decode the MySQL protocol.\n - [Dolphie](https://github.com/charles-001/dolphie) - a modern terminal tool for real-time analytics into MySQL/MariaDB & ProxySQL\n-- [sql-tap](https://github.com/mickamy/sql-tap) - Real-time SQL traffic viewer.\n+- [sql-tap](https://github.com/proto-tap/sql-tap) - Real-time SQL traffic viewer.\n \n ## Backup\n \n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": {
+        "id": "50",
+        "name": "sql-tap",
+        "modelAction": "update",
+        "disposition": "confirmed",
+        "recommendedAction": "update",
+        "baselineHold": true,
+        "baselineEligible": false,
+        "outreachSuitable": true,
+        "summary": "Canonical repository moved from mickamy/sql-tap to proto-tap/sql-tap. Old URL redirects; this is a supported cleanup, not a broken-project claim.",
+        "sources": [
+          {
+            "url": "https://api.github.com/repos/mickamy/sql-tap",
+            "observation": "Repository response resolves to full_name proto-tap/sql-tap, repository ID 1157577714."
+          },
+          {
+            "url": "https://github.com/proto-tap/sql-tap/blob/main/README.md",
+            "observation": "Current installation instructions use the new organization and explicitly describe the Homebrew tap move."
+          }
+        ]
+      },
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "56",
+        "name": "Databasus",
+        "url": "https://github.com/databasus/databasus",
+        "description": "tool for scheduled MySQL backups via web UI with external storages (local, S3, FTP, Google Drive, etc.), notifications (webhook, Discord, Slack, etc.) and team management.",
+        "section": "Backup",
+        "line": "- [Databasus](https://github.com/databasus/databasus) - tool for scheduled MySQL backups via web UI with external storages (local, S3, FTP, Google Drive, etc.), notifications (webhook, Discord, Slack, etc.) and team management.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Tagline 'PostgreSQL backup tool'. Supported databases: PostgreSQL 14\u201318 (physical and logical), MySQL 5.7, 8.0, 8.4, 9 and 26 (logical only), MariaDB, MongoDB. Storages: 'S3, Cloudflare R2, Azure Blob Storage, NAS, FTP, SFTP and more'. Notifiers: Email, Telegram, Slack, Discord, Teams, Mattermost, webhooks. Workspaces and access management. No mention of Google Drive.",
+            "url": "https://raw.githubusercontent.com/databasus/databasus/main/README.md"
+          },
+          {
+            "observation": "Supported storages: Local Storage, S3, Cloudflare R2, Azure Blob Storage, NAS, FTP, SFTP. Google Drive is absent.",
+            "url": "https://databasus.com/storages"
+          },
+          {
+            "observation": "Includes Azure blob, minio (S3), jlaffaye/ftp and pkg/sftp clients, and go-sql-driver/mysql. There is no google.golang.org/api (Drive) module.",
+            "url": "https://raw.githubusercontent.com/databasus/databasus/main/backend/go.mod"
+          },
+          {
+            "observation": "archived=false, Apache-2.0, pushed 2026-11-10, description 'PostgreSQL backup tool with Point-In-Time-Recovery and restore verification'.",
+            "url": "https://api.github.com/repos/databasus/databasus"
+          }
+        ],
+        "id": "56",
+        "limitations": [
+          "The README says 'and more' after the storage list. Removal of Google Drive is inferred from the official docs list and the dependency manifest; I did not find a changelog entry that announces it.",
+          "The project's focus has shifted to PostgreSQL. MySQL support is logical-only but still documented.",
+          "I did not run the software."
+        ],
+        "newDescription": "tool for scheduled MySQL backups via web UI with external storages (local, S3, FTP, etc.), notifications (webhook, Discord, Slack, etc.) and team management.",
+        "newName": null,
+        "newUrl": null,
+        "reason": "databasus/databasus is canonical, Apache-2.0 licensed, and active. The project now positions itself mainly as a PostgreSQL backup tool, but its README still lists MySQL 5.7\u20139/26 support (logical backups only), so it still fits the Backup section. Scheduled backups, web UI, webhook/Discord/Slack notifications and team features (workspaces, access management) are still documented, and local, S3 and FTP storage are still listed. Google Drive is not: neither the README storage list nor the official Storages docs page (Local, S3, Cloudflare R2, Azure Blob, NAS, FTP, SFTP) mentions it, and backend/go.mod has no Google Drive API dependency. I recommend removing that example; non-exhaustive 'etc.' wording keeps it durable."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -53,7 +53,7 @@\n \n *Backup/restore/recovery tools*\n \n-- [Databasus](https://github.com/databasus/databasus) - tool for scheduled MySQL backups via web UI with external storages (local, S3, FTP, Google Drive, etc.), notifications (webhook, Discord, Slack, etc.) and team management.\n+- [Databasus](https://github.com/databasus/databasus) - tool for scheduled MySQL backups via web UI with external storages (local, S3, FTP, etc.), notifications (webhook, Discord, Slack, etc.) and team management.\n - [Dumpling](https://github.com/pingcap/tidb/tree/master/dumpling) - Logical, parallel backup/dumper tool for MySQL/TiDB written in GoLang - support csv format output and integrated as library\n - [MyDumper](https://github.com/mydumper/mydumper) - Logical, parallel backup/dumper tool for MySQL\n - [Percona Xtrabackup](https://github.com/percona/percona-xtrabackup) - an open-source hot backup utility for MySQL - based servers that doesn\u2019t lock your database during the backup.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": {
+        "id": "56",
+        "name": "Databasus",
+        "modelAction": "update",
+        "disposition": "confirmed",
+        "recommendedAction": "update",
+        "baselineHold": true,
+        "baselineEligible": false,
+        "outreachSuitable": true,
+        "summary": "Current code explicitly removed built-in Google Drive storage, and subsequently removed rclone storage too. Removing Google Drive from the current supported-destination examples is supported. Older releases retain it; MySQL support itself remains.",
+        "sources": [
+          {
+            "url": "https://github.com/databasus/databasus/blob/main/backend/migrations/20261109083400_remove_google_drive_storage.sql",
+            "observation": "Migration states Google Drive support ended after 3.67.0 and rejects remaining configured Google Drive storages."
+          },
+          {
+            "url": "https://github.com/databasus/databasus/blob/main/backend/migrations/20261109134345_remove_rclone_storage.sql",
+            "observation": "Subsequent migration states 3.67.1 was the last rclone-supporting release and removes its storage support."
+          },
+          {
+            "url": "https://github.com/databasus/databasus/blob/main/backend/internal/modules/storages/internal/providers/type.go",
+            "observation": "Current storage enum contains local, S3, NAS, Azure Blob, FTP and SFTP, without Google Drive or rclone."
+          }
+        ],
+        "suggestedEmailWording": "Databasus is still listed as supporting Google Drive backups, although its current version has removed that destination."
+      },
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "99",
+        "name": "libAttachSQL",
+        "url": "https://github.com/libattachsql/libattachsql",
+        "description": "libAttachSQL is a lightweight, non-blocking C API for MySQL servers.",
+        "section": "Connectors",
+        "line": "- [libAttachSQL](https://github.com/libattachsql/libattachsql) - libAttachSQL is a lightweight, non-blocking C API for MySQL servers.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "remove",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Repository description/title: '* NOTE: This is now a dead project and used for CI testing * A lightweight C API for MySQL servers'.",
+            "url": "https://github.com/libattachsql/libattachsql"
+          },
+          {
+            "observation": "README points to libattachsql.org and Travis/Waffle badges; says master has an unstable API and recommends the v1.0 branch for a stable API.",
+            "url": "https://raw.githubusercontent.com/libattachsql/libattachsql/master/README.rst"
+          },
+          {
+            "observation": "Returned HTTP 502 (access failure, not used as sole evidence).",
+            "url": "http://libattachsql.org/"
+          }
+        ],
+        "id": "99",
+        "limitations": [
+          "The v1.0 branch is referenced as the stable API, but its maintenance status was not examined and should not be inferred from its existence; the dead-project notice applies to the project as a whole.",
+          "Removal must go through an issue per contribution rules; this is a recommendation for that discussion."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The project's own official GitHub repository description reads '* NOTE: This is now a dead project and used for CI testing * A lightweight C API for MySQL servers'. That is affirmative official evidence of discontinuation, and the list rules say 'Code must not be abandoned/discontinued'. The project homepage libattachsql.org returns HTTP 502 (supporting only, not decisive). Per the contribution rules, removal should be proposed by opening an issue; no documented successor was found."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -96,7 +96,6 @@\n - [DBD::MariaDB](https://github.com/perl5-dbi/DBD-MariaDB) - MariaDB and MySQL driver for the Perl5 Database Interface.\n - [DBD::mysql](https://github.com/perl5-dbi/DBD-mysql) - MySQL driver for the Perl5 Database Interface.\n - [go-sql-driver](https://github.com/go-sql-driver/mysql) - a lightweight and fast MySQL-Driver for Go's (golang) database/sql package.\n-- [libAttachSQL](https://github.com/libattachsql/libattachsql) - libAttachSQL is a lightweight, non-blocking C API for MySQL servers.\n - [MariaDB Connector/J](https://github.com/mariadb-corporation/mariadb-connector-j) - LGPL-licensed MariaDB Client Library for Java Applications.\n - [mex-mariadb](https://github.com/markuman/mex-mariadb) - MIT licensed MariaDB/MySQL Client Library for GNU Octave and Matlab.\n - [MySQL C API](https://dev.mysql.com/downloads/c-api/) - Official C driver for MySQL.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "114",
+        "name": "wtx",
+        "url": "https://github.com/c410-f3r/wtx",
+        "description": "Client for MySQL/MariaDB/Percona written in Rust",
+        "section": "Connectors",
+        "line": "- [wtx](https://github.com/c410-f3r/wtx) - Client for MySQL/MariaDB/Percona written in Rust",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "remove",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Commit 'feat!: Allow the decoding and encoding of arbitrary collections' (2026-05-01, PR #523) removes wtx/src/database/client/mysql.rs, the mysql/ submodule files, wtx-examples/database/database-client-mysql.rs, .scripts/integration-tests-mysql.sh and .test-utils/mysql.sh.",
+            "url": "https://github.com/c410-f3r/wtx/commit/e266e965fb"
+          },
+          {
+            "observation": "Current manifest (version 0.52.1) defines postgres and postgres-pool features. No mysql, mariadb or percona feature exists. A recursive tree listing of main has no mysql paths.",
+            "url": "https://raw.githubusercontent.com/c410-f3r/wtx/main/wtx/Cargo.toml"
+          },
+          {
+            "observation": "Database Client docs document only PostgreSQL.",
+            "url": "https://raw.githubusercontent.com/c410-f3r/wtx/main/wtx-docs/src/database-client/README.md"
+          },
+          {
+            "observation": "At tag wtx-0.44.2 (2026-04-21) the manifest still had 'mysql = [\"database\", ...]'. MySQL support existed until this release line.",
+            "url": "https://github.com/c410-f3r/wtx/blob/3cd0350316/wtx/Cargo.toml"
+          },
+          {
+            "observation": "Issue '[MySQL] Add support for MariaDB/MySQL/Percona' was closed 2025-02-23. MySQL support was added around March 2025 (commit 'Add MySQL client') and later removed.",
+            "url": "https://github.com/c410-f3r/wtx/issues/280"
+          }
+        ],
+        "id": "114",
+        "limitations": [
+          "The removal commit and PR #523 give no reason, and I found no statement on whether MySQL support might return.",
+          "Older crates.io releases (\u22640.44.x) still include the mysql feature. They are a legacy line, and I did not verify their maintenance status."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Recommend opening a removal issue, not a patch. The listed project no longer provides the MySQL/MariaDB/Percona client the entry describes. Commit e266e965fb (2026-05-01, PR #523) deleted wtx/src/database/client/mysql*, the MySQL example and the MySQL integration-test scripts. The current wtx/Cargo.toml has only postgres features, and the database-client docs and README cover only PostgreSQL. The project is still active, but its MySQL interface has been removed. Version 0.44.2 still had the mysql feature."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -111,7 +111,6 @@\n - [PyMySQL](https://github.com/PyMySQL/PyMySQL) - MySQL database connector for Python.\n - [Ruby Mysql2 gem](https://github.com/brianmario/mysql2) - MySQL driver for Ruby and Rails projects.\n - [MyZql](https://github.com/speed2exe/myzql) - MySQL and MariaDB driver in native Zig.\n-- [wtx](https://github.com/c410-f3r/wtx) - Client for MySQL/MariaDB/Percona written in Rust\n \n ## Deployment\n \n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "131",
+        "name": "Shift",
+        "url": "https://github.com/square/shift",
+        "description": "An application that helps you run schema migrations on MySQL databases",
+        "section": "Development",
+        "line": "- [Shift](https://github.com/square/shift) - An application that helps you run schema migrations on MySQL databases",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "replace",
+        "blockers": [
+          "SchemaBot is young (created 2026-04, v0.1.x, a few dozen stars). Whether it meets the list's 'reasonably recognized and adopted' / GA-quality conditions, or should go under Incubating, needs maintainer judgement."
+        ],
+        "evidence": [
+          {
+            "observation": "NOTE block: 'Shift is no longer under active development. Its successor is SchemaBot (https://github.com/block/schemabot), Block's GitOps tool for database schema changes ... Online MySQL schema changes run with Spirit.'",
+            "url": "https://raw.githubusercontent.com/square/shift/master/README.md"
+          },
+          {
+            "observation": "Latest commits: 2026-09-04/08 'Point readers to SchemaBot and Spirit in the README' (merged PR #112). The previous functional commit is from 2020-09.",
+            "url": "https://github.com/square/shift/commits/master"
+          },
+          {
+            "observation": "GitHub API: block/schemabot, not archived, Apache-2.0, created 2026-04-07, pushed 2026-11-10. Description: 'Define your database schema in code and apply changes safely through pull requests or the CLI'.",
+            "url": "https://github.com/block/schemabot"
+          },
+          {
+            "observation": "README badges: 'MySQL: GA', 'Vitess: GA', 'PostgreSQL: early alpha'. Declarative and GitOps-driven: compares SQL files to the live database and applies changes through PRs or a CLI. Releases v0.1.81\u2013v0.1.83 in Oct\u2013Nov 2026.",
+            "url": "https://raw.githubusercontent.com/block/schemabot/main/README.md"
+          }
+        ],
+        "id": "131",
+        "limitations": [
+          "SchemaBot is declarative/GitOps, whereas Shift was a UI-driven pt-osc runner. The workflows differ, but the successor relationship is officially stated.",
+          "I did not run either tool."
+        ],
+        "newDescription": "Declarative, GitOps-driven schema change tool for MySQL that plans and applies changes through pull requests or a CLI",
+        "newName": "SchemaBot",
+        "newUrl": "https://github.com/block/schemabot",
+        "reason": "The Shift README now officially states: 'Shift is no longer under active development. Its successor is SchemaBot, Block's GitOps tool for database schema changes', with online MySQL changes run by Spirit. Block is Square's parent company, and the notice was merged into square/shift in 2026-09. The project is therefore officially discontinued, which conflicts with the 'must not be abandoned/discontinued' condition, and it names an official successor. block/schemabot is Apache-2.0, actively released (v0.1.83 on 2026-11-03), and its README badges MySQL support as GA. Because this effectively removes Shift, the change should go through an issue."
+      },
+      "preview": null,
+      "previewHold": "0 proposed change(s); 1 held for unresolved questions.",
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "142",
+        "name": "DBeaver",
+        "url": "https://github.com/dbeaver/dbeaver/",
+        "description": "A cross-platform SQL and NoSQL database client.",
+        "section": "GUI",
+        "line": "- [DBeaver](https://github.com/dbeaver/dbeaver/) - A cross-platform SQL and NoSQL database client.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "'Free multi-platform database tool for developers, SQL programmers, database administrators and analysts.' Under 'PRO versions': 'Commercial versions extends functionality of community drivers, supports NoSQL databases and many more: ... Cassandra, ... MongoDB, ... Redis ...'. Later: commercial versions 'include NoSQL databases support'. The Community list includes MySQL and MariaDB.",
+            "url": "https://raw.githubusercontent.com/dbeaver/dbeaver/devel/README.md"
+          },
+          {
+            "observation": "GitHub API: not archived, Apache-2.0, default branch devel, pushed_at 2026-11-10. Description: 'Free universal database tool and SQL client'.",
+            "url": "https://github.com/dbeaver/dbeaver"
+          }
+        ],
+        "id": "142",
+        "limitations": [
+          "The Community driver list includes a few non-relational sources accessed through SQL/JDBC (e.g. Elasticsearch, OpenSearch, Solr). The suggested wording avoids the NoSQL claim rather than enumerating them."
+        ],
+        "newDescription": "A cross-platform universal database tool and SQL client.",
+        "newName": null,
+        "newUrl": null,
+        "reason": "DBeaver remains a relevant open-source, multi-platform GUI with MySQL support. However, the 'SQL and NoSQL' claim does not hold for the linked repository, which is the Community edition. Its README says the commercial versions 'support NoSQL databases' (MongoDB, Cassandra, Redis, etc.) and that commercial versions 'include NoSQL databases support'. Suggested wording follows the official repo description and README."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -139,7 +139,7 @@\n *GUI frontends & applications*\n \n - [Adminer](https://github.com/vrana/adminer/) - Database management in a single PHP file.\n-- [DBeaver](https://github.com/dbeaver/dbeaver/) - A cross-platform SQL and NoSQL database client.\n+- [DBeaver](https://github.com/dbeaver/dbeaver/) - A cross-platform universal database tool and SQL client.\n - [StackRender](https://github.com/stackrender/stackrender) - Free and open-source database schema design and SQL migration generator for MySQL. \n - [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL) - MySQL GUI frontend for Windows.\n - [ILLA Cloud](https://github.com/illacloud/illa-builder) - Low-code internal tool builder integrated with Mysql, can be used as GUI for Mysql. \n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "146",
+        "name": "LibreDB Studio",
+        "url": "https://github.com/libredb/libredb-studio",
+        "description": "Browser-based SQL IDE for MySQL and nine other engines, deployed as a container or Helm chart next to the database.",
+        "section": "GUI",
+        "line": "- [LibreDB Studio](https://github.com/libredb/libredb-studio) - Browser-based SQL IDE for MySQL and nine other engines, deployed as a container or Helm chart next to the database.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Reads 'Forty-two engines share one interface: PostgreSQL, MySQL, Oracle, Db2 LUW, SQL Server, ...' and 'It deploys next to the data: a container, a Helm chart, an operator, a one-click template on your PaaS, or npm i @libredb/studio'. Quick start uses docker run ghcr.io/libredb/libredb-studio:latest. License is MIT.",
+            "url": "https://raw.githubusercontent.com/libredb/libredb-studio/main/README.md"
+          },
+          {
+            "observation": "Resolves with HTTP 200 and no redirect, so the canonical owner/name is unchanged.",
+            "url": "https://github.com/libredb/libredb-studio"
+          }
+        ],
+        "id": "146",
+        "limitations": [
+          "Other install paths (Homebrew, Snap, winget, desktop wrapper) also exist. The description does not need to list them.",
+          "The software was not run."
+        ],
+        "newDescription": "Browser-based SQL IDE for MySQL and many other engines, deployed as a container or Helm chart next to the database.",
+        "newName": null,
+        "newUrl": null,
+        "reason": "The repository is reachable at libredb/libredb-studio and is MIT licensed. It is still a browser-based SQL IDE that deploys next to the data as a container or Helm chart. However, the count in 'MySQL and nine other engines' is out of date: the current README says 'Forty-two engines share one interface'. The suggested replacement drops the count, since it is likely to keep changing."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -143,7 +143,7 @@\n - [StackRender](https://github.com/stackrender/stackrender) - Free and open-source database schema design and SQL migration generator for MySQL. \n - [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL) - MySQL GUI frontend for Windows.\n - [ILLA Cloud](https://github.com/illacloud/illa-builder) - Low-code internal tool builder integrated with Mysql, can be used as GUI for Mysql. \n-- [LibreDB Studio](https://github.com/libredb/libredb-studio) - Browser-based SQL IDE for MySQL and nine other engines, deployed as a container or Helm chart next to the database.\n+- [LibreDB Studio](https://github.com/libredb/libredb-studio) - Browser-based SQL IDE for MySQL and many other engines, deployed as a container or Helm chart next to the database.\n - [mycli](https://github.com/dbcli/mycli) - A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting.\n - [MySQL Shell](https://github.com/mysql/mysql-shell/) - Advanced client and code editor for MySQL that supports development and administration for the MySQL Server and MySQL InnoDB cluster (AdminAPI) with an interactive JavaScript, Python, or SQL interface.\n - [MySQL Workbench](https://github.com/mysql/mysql-workbench) - provides DBAs and developers an integrated tools environment for database design & modeling; SQL devleopment; database administration.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "149",
+        "name": "MySQL Workbench",
+        "url": "https://github.com/mysql/mysql-workbench",
+        "description": "provides DBAs and developers an integrated tools environment for database design & modeling; SQL devleopment; database administration.",
+        "section": "GUI",
+        "line": "- [MySQL Workbench](https://github.com/mysql/mysql-workbench) - provides DBAs and developers an integrated tools environment for database design & modeling; SQL devleopment; database administration.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Repository description: 'This repository contains the now EOL version of MySQL Workbench 8. For the new Workbench, see https://github.com/mysql/mysql-shell-plugins'. Default branch is 8.0, last commit 2026-04-02.",
+            "url": "https://github.com/mysql/mysql-workbench"
+          },
+          {
+            "observation": "'It also contains the source code for MySQL Workbench, which is built on MySQL Shell and these plugins.' Also: 'MySQL Workbench is a desktop application for developing, administering, and migrating MySQL databases. It includes a rich SQL editor, database administration and maintenance tools, and migration tools.'",
+            "url": "https://raw.githubusercontent.com/mysql/mysql-shell-plugins/master/README.md"
+          },
+          {
+            "observation": "Repository description: 'Plugins for the MySQL Shell, including the new MySQL Workbench 26'.",
+            "url": "https://github.com/mysql/mysql-shell-plugins"
+          },
+          {
+            "observation": "Release notes index lists Workbench 26.10.0 (2026-10-21), 26.7.0 (2026-09-10) and 8.0.47 (2026-04-23) as the last 8.0 release.",
+            "url": "https://dev.mysql.com/doc/relnotes/workbench/en/"
+          },
+          {
+            "observation": "The 8.0 README still describes SQL development, data modeling, server administration and data migration.",
+            "url": "https://raw.githubusercontent.com/mysql/mysql-workbench/8.0/README.md"
+          }
+        ],
+        "id": "149",
+        "limitations": [
+          "mysql-shell-plugins also holds other MySQL Shell plugins (MDS, MRS, MSM, Utils), so the URL points at a broader repository than Workbench alone.",
+          "Whether Workbench 26 keeps the visual data-modeling features of 8.0 was not confirmed. The suggested description leaves that claim out rather than asserting it.",
+          "License of the new repo was not checked through the API (rate-limited). WORKBENCH_DEV.md carries GPLv2 text."
+        ],
+        "newDescription": "provides DBAs and developers an integrated environment for SQL development, database administration and migration.",
+        "newName": null,
+        "newUrl": "https://github.com/mysql/mysql-shell-plugins",
+        "reason": "The listed repository mysql/mysql-workbench now officially describes itself as 'the now EOL version of MySQL Workbench 8' and points to https://github.com/mysql/mysql-shell-plugins for the new Workbench. That repository's README says it contains the source code for MySQL Workbench. Official release notes show 8.0.47 (2026-04-23) followed by Workbench 26.7.0 and 26.10.0. This is the same product from the same owner (mysql), not a competitor. The current description also has a typo ('devleopment') and claims design & modeling, which the new Workbench README does not mention. The suggested wording follows the new README."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -146,7 +146,7 @@\n - [LibreDB Studio](https://github.com/libredb/libredb-studio) - Browser-based SQL IDE for MySQL and nine other engines, deployed as a container or Helm chart next to the database.\n - [mycli](https://github.com/dbcli/mycli) - A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting.\n - [MySQL Shell](https://github.com/mysql/mysql-shell/) - Advanced client and code editor for MySQL that supports development and administration for the MySQL Server and MySQL InnoDB cluster (AdminAPI) with an interactive JavaScript, Python, or SQL interface.\n-- [MySQL Workbench](https://github.com/mysql/mysql-workbench) - provides DBAs and developers an integrated tools environment for database design & modeling; SQL devleopment; database administration.\n+- [MySQL Workbench](https://github.com/mysql/mysql-shell-plugins) - provides DBAs and developers an integrated environment for SQL development, database administration and migration.\n - [Ocelot GUI](https://github.com/ocelot-inc/ocelotgui) - GUI client for MySQL or MariaDB, including debugger.\n - [OmniDB: Web tool for database management](https://github.com/OmniDB/OmniDB)\n - [Percona Monitoring and Management](https://github.com/percona/pmm) - An open-source platform for managing and monitoring MySQL performance.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "165",
+        "name": "Galera Cluster",
+        "url": "https://github.com/codership/galera",
+        "description": "a true Multimaster Cluster based on synchronous replication.",
+        "section": "HA",
+        "line": "- [Galera Cluster](https://github.com/codership/galera) - a true Multimaster Cluster based on synchronous replication.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Following redirects ends at https://github.com/mariadb-corporation/galera with HTTP 200.",
+            "url": "https://github.com/codership/galera"
+          },
+          {
+            "observation": "'This is Galera replication - Codership's implementation of the write set replication (wsrep) interface', GPLv2. The README still credits Codership.",
+            "url": "https://raw.githubusercontent.com/codership/galera/4.x/README"
+          },
+          {
+            "observation": "Redirects to https://mariadb.com/docs/galera-cluster ('MariaDB Galera Cluster').",
+            "url": "https://galeracluster.com"
+          }
+        ],
+        "id": "165",
+        "limitations": [
+          "Repository description per the snapshot is 'Synchronous multi-master replication library'. The word 'true' in the entry is mild puffery, but not a factual error.",
+          "The exact date and terms of the Codership to MariaDB transfer were not read from an announcement."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": "https://github.com/mariadb-corporation/galera",
+        "reason": "The listed URL https://github.com/codership/galera now redirects to https://github.com/mariadb-corporation/galera. The packet snapshot also resolves to mariadb-corporation/galera, and galeracluster.com now redirects to MariaDB's Galera Cluster documentation, which corroborates the ownership change. The project and its description (synchronous multi-master replication) are unchanged, so only the canonical URL should be updated."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -162,7 +162,7 @@\n \n *High availability solutions*\n \n-- [Galera Cluster](https://github.com/codership/galera) - a true Multimaster Cluster based on synchronous replication.\n+- [Galera Cluster](https://github.com/mariadb-corporation/galera) - a true Multimaster Cluster based on synchronous replication.\n - [mha4mysql-node](https://github.com/yoshinorim/mha4mysql-node) and [mha4mysql-manager](https://github.com/yoshinorim/mha4mysql-manager) (both unmaintained) - Master High Availability Manager and tools for MySQL.\n - [Orchestrator](https://github.com/ProxySQL/orchestrator) - MySQL replication topology management and High Availability solution.\n - [Percona Replication Manager](https://github.com/percona/replication-manager) - Asynchronous MySQL replication manager agent for Pacemaker. Supports file and GTID based replication, geo-distributed clusters using booth.\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "168",
+        "name": "Percona Replication Manager",
+        "url": "https://github.com/percona/replication-manager",
+        "description": "Asynchronous MySQL replication manager agent for Pacemaker. Supports file and GTID based replication, geo-distributed clusters using booth.",
+        "section": "HA",
+        "line": "- [Percona Replication Manager](https://github.com/percona/replication-manager) - Asynchronous MySQL replication manager agent for Pacemaker. Supports file and GTID based replication, geo-distributed clusters using booth.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "update",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Titled 'Replication manager for PXC and MariaDB'. Manages asynchronous replication between PXC or MariaDB clusters, uses Galera for quorum within a cluster, and states 'This solution works only with GTID based replication'. No mention of Pacemaker or booth.",
+            "url": "https://raw.githubusercontent.com/percona/replication-manager/main/README.md"
+          },
+          {
+            "observation": "Canonical nwo percona/replication-manager, not a fork. Files: replication_manager.sh, replication_manager5.sh, percona-replication-manager_builder.sh, debian/, rpm/. Latest commit is dated 2026-01-07.",
+            "url": "https://github.com/percona/replication-manager"
+          },
+          {
+            "observation": "Redirects to Percona-Lab/pacemaker-replication-agents, described as a 'Repository of the Percona Pacemaker resource agents'. README refers to PRM mailing lists. Agents include mysql_prm and mysql_prm_gtid.",
+            "url": "https://github.com/percona/percona-pacemaker-agents"
+          },
+          {
+            "observation": "The geo-DR guide mentions booth 26 times. This matches the entry's 'geo-distributed clusters using booth' claim, so the current description belongs to this repo, not the one linked. Its latest commit is dated 2017-03-31.",
+            "url": "https://raw.githubusercontent.com/Percona-Lab/pacemaker-replication-agents/master/doc/PRM-geo-DR-guide.rst"
+          }
+        ],
+        "id": "168",
+        "limitations": [
+          "Did not run either tool.",
+          "The other possible fix, pointing the entry at Percona-Lab/pacemaker-replication-agents and keeping the old description, is also consistent with the evidence, but that repo has had no commits since 2017. The maintainer may prefer that option or opening an issue."
+        ],
+        "newDescription": "Manages asynchronous GTID replication links between Percona XtraDB Cluster or MariaDB Galera clusters.",
+        "newName": null,
+        "newUrl": null,
+        "reason": "The listed URL works, but the repository it points to is a different tool from the one the entry describes. percona/replication-manager (not a fork) is a shell-script tool that manages asynchronous GTID replication links between Percona XtraDB Cluster or MariaDB Galera clusters. Its README says it works only with GTID-based replication and never mentions Pacemaker or booth. The Pacemaker agent the description refers to (PRM: Pacemaker, file and GTID agents, booth for geo-DR) is a separate repo, Percona-Lab/pacemaker-replication-agents (percona/percona-pacemaker-agents redirects there). That repo's last commit was in 2017. Recommended: keep the URL and correct the description so it matches the repo actually linked."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -165,7 +165,7 @@\n - [Galera Cluster](https://github.com/codership/galera) - a true Multimaster Cluster based on synchronous replication.\n - [mha4mysql-node](https://github.com/yoshinorim/mha4mysql-node) and [mha4mysql-manager](https://github.com/yoshinorim/mha4mysql-manager) (both unmaintained) - Master High Availability Manager and tools for MySQL.\n - [Orchestrator](https://github.com/ProxySQL/orchestrator) - MySQL replication topology management and High Availability solution.\n-- [Percona Replication Manager](https://github.com/percona/replication-manager) - Asynchronous MySQL replication manager agent for Pacemaker. Supports file and GTID based replication, geo-distributed clusters using booth.\n+- [Percona Replication Manager](https://github.com/percona/replication-manager) - Manages asynchronous GTID replication links between Percona XtraDB Cluster or MariaDB Galera clusters.\n - [replication-manager](https://github.com/signal18/replication-manager) - a high availability solution to manage MariaDB 10.x and MySQL & Percona Server 5.7 GTID replication topologies.\n \n ## MCP\n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "173",
+        "name": "MCP MariaDB Server",
+        "url": "https://github.com/MariaDB/mcp",
+        "description": "the official MariaDB MCP server.",
+        "section": "MCP",
+        "line": "- [MCP MariaDB Server](https://github.com/MariaDB/mcp) - the official MariaDB MCP server.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "replace",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "'Deprecation Notice: MariaDB MCP Server is moving (Effective Nov 3, 2026)\u2026 this repository (mariadb/mcp) is officially deprecated\u2026 all development, updates, and releases for the MariaDB MCP Server will take place in\u2026 mariadb-corporation/ai-plugins'.",
+            "url": "https://raw.githubusercontent.com/MariaDB/mcp/main/README.md"
+          },
+          {
+            "observation": "'MariaDB AI Plugins': agent skills plus the native mariadb-shell MCP server, which provides a live connection to MariaDB for schema reads, queries and EXPLAIN. Licensed GPL-2.0.",
+            "url": "https://raw.githubusercontent.com/mariadb-corporation/ai-plugins/main/README.md"
+          },
+          {
+            "observation": "Page metadata: nwo mariadb-corporation/ai-plugins, is_fork=false, network root itself. github.com/mariadb/ai-plugins is a fork whose parent is mariadb-corporation/ai-plugins.",
+            "url": "https://github.com/mariadb-corporation/ai-plugins"
+          }
+        ],
+        "id": "173",
+        "limitations": [
+          "The successor is a different implementation (an MCP plugin for MariaDB Shell, bundled with agent skills), not a renamed Python server. The maintainer may want to confirm it still fits the MCP section.",
+          "The deprecation took effect only a week before this review. The new repo is young, and its adoption was not assessed.",
+          "The old MariaDB/mcp repo is not archived."
+        ],
+        "newDescription": "official MariaDB AI agent plugins, including the MariaDB Shell-based MCP server.",
+        "newName": "MariaDB AI Plugins",
+        "newUrl": "https://github.com/mariadb-corporation/ai-plugins",
+        "reason": "The MariaDB/mcp README opens with an official deprecation notice: effective November 3, 2026, the repo is deprecated, and all MariaDB MCP Server development and releases move to mariadb-corporation/ai-plugins. That repo exists, is the network root (MariaDB/ai-plugins is a fork of it), is licensed GPL-2.0, and provides a MariaDB Shell-based MCP server plus agent skills. This is an officially documented successor, not a competitor."
+      },
+      "preview": "--- a/README.md\n+++ b/README.md\n@@ -170,7 +170,7 @@\n \n ## MCP\n \n-- [MCP MariaDB Server](https://github.com/MariaDB/mcp) - the official MariaDB MCP server.\n+- [MariaDB AI Plugins](https://github.com/mariadb-corporation/ai-plugins) - official MariaDB AI agent plugins, including the MariaDB Shell-based MCP server.\n - [MySQL MCP Server](https://github.com/askdba/mysql-mcp-server) - Advanced MCP server exposing MySQL via the Model Context Protocol\n - [TiDB MCP Server](https://pingcap.github.io/ai/integrations/tidb-mcp-server/) - MCP Server for TiDB.\n \n",
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "40",
+        "name": "innodb-ruby",
+        "url": "https://github.com/jeremycole/innodb_ruby",
+        "description": "A parser for InnoDB file formats, in Ruby.",
+        "section": "Analysis",
+        "line": "- [innodb-ruby](https://github.com/jeremycole/innodb_ruby) - A parser for InnoDB file formats, in Ruby.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Description is accurate, but the README explicitly warns against critical production use and describes unstable/buggy investigative tooling. The catalog contribution rules require production/GA readiness outside Incubating. Hold this keep pending curator interpretation rather than automatically removing it."
+        ],
+        "evidence": [
+          {
+            "observation": "archived=false, pushed_at 2026-04-28, description 'A parser for InnoDB file formats, in Ruby'.",
+            "url": "https://api.github.com/repos/jeremycole/innodb_ruby"
+          },
+          {
+            "observation": "Title 'A parser for InnoDB file formats, in Ruby'. Says it is a learning, teaching, investigative and debugging tool, 'not intended for critical production usage'.",
+            "url": "https://raw.githubusercontent.com/jeremycole/innodb_ruby/main/README.md"
+          },
+          {
+            "observation": "Revised (3-clause) BSD license.",
+            "url": "https://raw.githubusercontent.com/jeremycole/innodb_ruby/main/LICENSE"
+          }
+        ],
+        "id": "40",
+        "limitations": [
+          "The upstream README says the tool is not meant for critical production use. The maintainer may consider this against the list's GA-quality guideline, but it does not make the description wrong."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Description is accurate, but the README explicitly warns against critical production use and describes unstable/buggy investigative tooling. The catalog contribution rules require production/GA readiness outside Incubating. Hold this keep pending curator interpretation rather than automatically removing it."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": {
+        "id": "40",
+        "name": "innodb-ruby",
+        "modelAction": "keep",
+        "disposition": "qualified",
+        "recommendedAction": "uncertain",
+        "baselineHold": true,
+        "baselineEligible": false,
+        "outreachSuitable": false,
+        "summary": "Description is accurate, but the README explicitly warns against critical production use and describes unstable/buggy investigative tooling. The catalog contribution rules require production/GA readiness outside Incubating. Hold this keep pending curator interpretation rather than automatically removing it.",
+        "sources": [
+          {
+            "url": "https://github.com/jeremycole/innodb_ruby/blob/main/README.md",
+            "observation": "Describes an InnoDB Ruby parser intended for learning, teaching and investigation, with production and stability warnings."
+          },
+          {
+            "url": "https://github.com/shlomi-noach/awesome-mysql/blob/master/CONTRIBUTING.md",
+            "observation": "Contribution rules require production/GA readiness, with an Incubating exception."
+          }
+        ]
+      },
+      "baselineHoldReason": null,
+      "originalAssessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "archived=false, pushed_at 2026-04-28, description 'A parser for InnoDB file formats, in Ruby'.",
+            "url": "https://api.github.com/repos/jeremycole/innodb_ruby"
+          },
+          {
+            "observation": "Title 'A parser for InnoDB file formats, in Ruby'. Says it is a learning, teaching, investigative and debugging tool, 'not intended for critical production usage'.",
+            "url": "https://raw.githubusercontent.com/jeremycole/innodb_ruby/main/README.md"
+          },
+          {
+            "observation": "Revised (3-clause) BSD license.",
+            "url": "https://raw.githubusercontent.com/jeremycole/innodb_ruby/main/LICENSE"
+          }
+        ],
+        "id": "40",
+        "limitations": [
+          "The upstream README says the tool is not meant for critical production use. The maintainer may consider this against the list's GA-quality guideline, but it does not make the description wrong."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Identity confirmed: jeremycole/innodb_ruby is not archived, had recent activity (2026-04), and is BSD-3-Clause licensed per its LICENSE file (the API reports NOASSERTION). The README title is literally 'A parser for InnoDB file formats, in Ruby', so the description is accurate and the tool fits Analysis."
+      }
+    },
+    {
+      "entry": {
+        "id": "106",
+        "name": "MySQL Connector/Node.js",
+        "url": "https://github.com/mysql/mysql-connector-nodejs",
+        "description": "Official Node.js driver for MySQL.",
+        "section": "Connectors",
+        "line": "- [MySQL Connector/Node.js](https://github.com/mysql/mysql-connector-nodejs) - Official Node.js driver for MySQL.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Whether Oracle has discontinued or stopped maintaining Connector/Node.js after 8.0.35 is unconfirmed; no official end-of-life statement was found."
+        ],
+        "evidence": [
+          {
+            "observation": "'MySQL Connector/Node.js is a MySQL 8 driver for Node.js, officially supported and maintained by Oracle. It contains an implementation of the X DevAPI'.",
+            "url": "https://raw.githubusercontent.com/mysql/mysql-connector-nodejs/trunk/README.md"
+          },
+          {
+            "observation": "dist-tags latest 8.0.35; last publish 2023-10-25; latest version not marked deprecated.",
+            "url": "https://registry.npmjs.org/@mysql/xdevapi"
+          },
+          {
+            "observation": "Download page still lists 'General Availability (GA) Releases' with Connector/Node.js 8.0.35.",
+            "url": "https://dev.mysql.com/downloads/connector/nodejs/"
+          }
+        ],
+        "id": "106",
+        "limitations": [
+          "X Protocol/X DevAPI only, not the classic protocol; the entry does not claim otherwise."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Identity and description are accurate: the README says it is 'a MySQL 8 driver for Node.js, officially supported and maintained by Oracle' (X DevAPI), and the MySQL download page still lists GA 8.0.35. However, the npm package @mysql/xdevapi has had no release since 8.0.35 (2023-10-25), with none for MySQL 8.1/8.4/9.x. Whether Oracle still maintains it is unresolved; no official discontinuation notice was found."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "130",
+        "name": "Liquibase",
+        "url": "https://github.com/liquibase/liquibase",
+        "description": "Source control for your database",
+        "section": "Development",
+        "line": "- [Liquibase](https://github.com/liquibase/liquibase) - Source control for your database",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Whether FSL-1.1-ALv2 makes Liquibase ineligible under the list's 'free and open source / FSF listings' rule is a maintainer policy decision. It should be raised in a removal issue per the contribution rules."
+        ],
+        "evidence": [
+          {
+            "observation": "Header: 'Functional Source License, Version 1.1, ALv2 Future License'. Abbreviation FSL-1.1-ALv2. 'Copyright \u00a9 2025 Liquibase Inc.'",
+            "url": "https://raw.githubusercontent.com/liquibase/liquibase/main/LICENSE.txt"
+          },
+          {
+            "observation": "GitHub API: not archived, license NOASSERTION, pushed_at 2026-11-10. Description 'Main Liquibase Source'.",
+            "url": "https://github.com/liquibase/liquibase"
+          }
+        ],
+        "id": "130",
+        "limitations": [
+          "Earlier Liquibase releases (4.x line) were Apache-2.0. I did not verify whether that line is still maintained.",
+          "I did not verify the exact release in which the FSL change took effect."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Liquibase is active and still fits as a schema-change and source-control tool for databases. However, the repository's root LICENSE.txt is now the Functional Source License 1.1 with an Apache-2.0 future license (FSL-1.1-ALv2, copyright 2025 Liquibase Inc.). FSL is source-available, not an OSI- or FSF-recognized free/open-source license. The contribution rules say 'halfway open sourced' software will not be accepted and will be removed. That is a licensing-policy question for a removal issue, not a purpose or interface loss, so I mark this uncertain rather than remove."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "145",
+        "name": "ILLA Cloud",
+        "url": "https://github.com/illacloud/illa-builder",
+        "description": "Low-code internal tool builder integrated with Mysql, can be used as GUI for Mysql. ",
+        "section": "GUI",
+        "line": "- [ILLA Cloud](https://github.com/illacloud/illa-builder) - Low-code internal tool builder integrated with Mysql, can be used as GUI for Mysql. ",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Unresolved: whether ILLA Builder or ILLA Cloud has been officially discontinued or is only dormant. If a maintainer wants to raise abandonment, it would need an issue under the contribution rules."
+        ],
+        "evidence": [
+          {
+            "observation": "'ILLA is a robust open source low-code platform for developers to build internal tools.' Step 3 reads 'Connect to MySQL or REST API through our GUI data connectors.' Self-hosting via Docker/k8s is documented, and the license badge shows Apache 2.",
+            "url": "https://raw.githubusercontent.com/illacloud/illa-builder/beta/README.md"
+          },
+          {
+            "observation": "Most recent release entry is illa-builder@4.8.5, dated 2024-08-05.",
+            "url": "https://github.com/illacloud/illa-builder/releases.atom"
+          },
+          {
+            "observation": "Latest commit on the beta (default) branch is dated 2025-05-14.",
+            "url": "https://github.com/illacloud/illa-builder/commits/beta.atom"
+          }
+        ],
+        "id": "145",
+        "limitations": [
+          "https://www.illacloud.com returned a proxy 502 from this environment. That is an access failure, not evidence that the service has shut down.",
+          "The GitHub REST API was rate-limited, so the archived flag comes from the packet snapshot (archived=false)."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Identity and description are supported. illacloud/illa-builder is reachable with no redirect, Apache-2.0 licensed, and its README says it connects to MySQL as a data source for low-code internal tools. What is unresolved is whether the project is still maintained, which the contribution rules require: the last tagged release is illa-builder@4.8.5 from August 2024, the last commit on the default beta branch is from May 2025, and the official site could not be reached. No official discontinuation notice was found, and inactivity alone does not justify removal."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "151",
+        "name": "OmniDB: Web tool for database management",
+        "url": "https://github.com/OmniDB/OmniDB",
+        "description": "",
+        "section": "GUI",
+        "line": "- [OmniDB: Web tool for database management](https://github.com/OmniDB/OmniDB)",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Unresolved: whether OmniDB has been officially discontinued, and whether the current 3.x release still supports MySQL. Removal would need an issue under the contribution rules plus affirmative evidence."
+        ],
+        "evidence": [
+          {
+            "observation": "Headed 'OmniDB 3.0.3 Beta, Release Date: December 17, 2020'. Release notes focus on PostgreSQL 13 support. Points to https://omnidb.org and omnidb.readthedocs.io.",
+            "url": "https://raw.githubusercontent.com/OmniDB/OmniDB/master/README.md"
+          },
+          {
+            "observation": "Latest commit is dated 2020-12-17.",
+            "url": "https://github.com/OmniDB/OmniDB/commits/master.atom"
+          },
+          {
+            "observation": "Latest release is 3.0.3b, dated 2020-12-17.",
+            "url": "https://github.com/OmniDB/OmniDB/releases.atom"
+          }
+        ],
+        "id": "151",
+        "limitations": [
+          "https://omnidb.org returned a proxy 502 here. That is an access failure, not evidence the project is dead.",
+          "The archived flag comes from the packet snapshot (archived=false). The GitHub API was rate-limited."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "This is a bare-link entry. The repository is reachable at OmniDB/OmniDB with no redirect, and the repo description 'Web tool for database management' matches the link text. However, the README still describes 'OmniDB 3.0.3 Beta', released 2020-12-17. Both the last release (3.0.3b) and the last commit are from December 2020, roughly six years ago. No official discontinuation notice could be read: omnidb.org was unreachable from this environment. Current MySQL support in the 3.x line was not confirmed beyond legacy test folders (tests.old/mysql)."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "188",
+        "name": "data-diff",
+        "url": "https://github.com/datafold/data-diff",
+        "description": "Command-line tool and Python library to efficiently diff rows across two different databases.",
+        "section": "Replication",
+        "line": "* [data-diff](https://github.com/datafold/data-diff) (archived) - Command-line tool and Python library to efficiently diff rows across two different databases.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Maintainer policy is unresolved: the '(archived)' annotation suggests keeping, while the rule against discontinued code suggests a removal issue."
+        ],
+        "evidence": [
+          {
+            "observation": "'As of May 17, 2024, Datafold is no longer actively supporting or developing open source data-diff.' Links to a sunsetting blog post. Licensed MIT.",
+            "url": "https://raw.githubusercontent.com/datafold/data-diff/master/README.md"
+          },
+          {
+            "observation": "Canonical datafold/data-diff, archived. Description: 'Compare tables within or across databases'.",
+            "url": "https://github.com/datafold/data-diff"
+          }
+        ],
+        "id": "188",
+        "limitations": [
+          "Did not research community forks. Datafold names no official successor."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Datafold has officially discontinued the open-source data-diff, and the repo is archived. The catalog entry already marks it '(archived)'. The pinned rules say code must not be abandoned/discontinued. However, the tool's purpose and interface have not been withdrawn, and the existing '(archived)' annotation suggests the maintainer chose to keep archived entries. Whether the catalog keeps discontinued-but-useful tools is a policy question for the maintainer."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "246",
+        "name": "Database Systems Lecture Notes",
+        "url": "http://spots.augusta.edu/caubert/db/ln/",
+        "description": "lecture notes on Database Systems (available in pdf, html, odt and markdown) including a Chapter on SQL that covers basic set-up, exercises and problems.",
+        "section": "e-books",
+        "line": "- [Database Systems Lecture Notes](http://spots.augusta.edu/caubert/db/ln/) - lecture notes on Database Systems (available in pdf, html, odt and markdown) including a Chapter on SQL that covers basic set-up, exercises and problems.",
+        "changeReason": "fetch-incomplete"
+      },
+      "assessment": {
+        "action": "uncertain",
+        "blockers": [
+          "Live content at the listed URL could not be read (HTTP 503), so it's unknown whether the notes are still published there or have moved.",
+          "No official notice of a new canonical hosting location was found. The RocketGit repo is a source repository, and I didn't confirm whether it publishes the rendered notes."
+        ],
+        "evidence": [
+          {
+            "observation": "http://spots.augusta.edu/caubert/db/ln/ redirects to https and returns HTTP 503 (tested 2026-11-10). The parent https://spots.augusta.edu/caubert/ also returns 503.",
+            "url": "https://spots.augusta.edu/caubert/db/ln/"
+          },
+          {
+            "observation": "Archived page: \"CSCI 3410 - Database Systems Lecture Notes\". It contains exercises, exams, problems and selected solutions, plus a hands-on guide to install, configure and run MariaDB, MySQL and MongoDB. It links to CSCI_3410_lecture_notes.pdf/.html/.odt and RocketGit source. The CDX index shows 200 responses through 2024-09-28.",
+            "url": "https://web.archive.org/web/20240928101004/https://spots.augusta.edu/caubert/db/ln/"
+          },
+          {
+            "observation": "HTTP 200. This is the source repository linked from the archived page. Its contents were not inspected in detail.",
+            "url": "https://rocketgit.com/user/caubert/CSCI_3410"
+          }
+        ],
+        "id": "246",
+        "limitations": [
+          "The 503 may be a temporary or institutional outage. It isn't evidence the resource was withdrawn.",
+          "The RocketGit source repo is reachable, but it is the source, not a published book. I did not verify that it is an officially endorsed replacement URL."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The listed URL now redirects http\u2192https and returns HTTP 503, as does the parent /caubert/ page, so the current live content can't be confirmed. The latest Wayback snapshot (2024-09-28) shows the expected page: \"CSCI 3410 - Database Systems Lecture Notes\" at Augusta University, with PDF, HTML and ODT downloads and source on RocketGit. It covers exercises, problems and hands-on install guides for MariaDB/MySQL. The description matched the resource then. An access failure alone doesn't justify removal, and I found no official notice of a move or withdrawal."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": false,
+      "independentAudit": null,
+      "baselineHoldReason": null,
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "48",
+        "name": "Wireshark",
+        "url": "https://gitlab.com/wireshark/wireshark/",
+        "description": "a protocol analyzer that can decode the MySQL protocol.",
+        "section": "Analysis",
+        "line": "- [Wireshark](https://gitlab.com/wireshark/wireshark/) - a protocol analyzer that can decode the MySQL protocol.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "path_with_namespace wireshark/wireshark, web_url https://gitlab.com/wireshark/wireshark, last_activity_at 2026-11-10.",
+            "url": "https://gitlab.com/api/v4/projects/wireshark%2Fwireshark"
+          },
+          {
+            "observation": "Header: 'packet-mysql.c \u2014 Routines for MySQL/MariaDB packet dissection', covering MySQL 4.1+ and the MariaDB protocol.",
+            "url": "https://gitlab.com/wireshark/wireshark/-/raw/master/epan/dissectors/packet-mysql.c"
+          }
+        ],
+        "id": "48",
+        "limitations": [
+          "The unauthenticated GitLab API did not return the archived flag, but recent activity shows the project is live."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The GitLab URL resolves (HTTP 200) to the canonical wireshark/wireshark project, which was active on 2026-11-10. The repo contains the dissector epan/dissectors/packet-mysql.c ('Routines for MySQL/MariaDB packet dissection'), which confirms that Wireshark decodes the MySQL protocol."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": "Source or catalog stability was not confirmed for this review.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "67",
+        "name": "go-tpc",
+        "url": "https://github.com/pingcap/go-tpc",
+        "description": "A golang port of [TPCC](http://www.tpc.org/tpcc/) and [TPCH](http://www.tpc.org/tpch/) benchmark for MySQL.",
+        "section": "Benchmarking",
+        "line": "- [go-tpc](https://github.com/pingcap/go-tpc) - A golang port of [TPCC](http://www.tpc.org/tpcc/) and [TPCH](http://www.tpc.org/tpch/) benchmark for MySQL.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "'A toolbox to benchmark workloads in TPC for TiDB and almost MySQL compatible databases, and PostgreSQL compatible database'.",
+            "url": "https://raw.githubusercontent.com/pingcap/go-tpc/master/README.md"
+          },
+          {
+            "observation": "archived=false, Apache-2.0, pushed_at 2026-01-13.",
+            "url": "https://api.github.com/repos/pingcap/go-tpc"
+          }
+        ],
+        "id": "67",
+        "limitations": [
+          "I took TPC-C/TPC-H support from the README overview and the packet's tpch/dbgen directory; I did not run the tool.",
+          "The entry has extra inline links (tpc.org) that go against the one-link guideline. They are kept as-is per the brief."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "pingcap/go-tpc is canonical and Apache-2.0 licensed. Its README describes a Go toolbox for TPC workloads on TiDB, MySQL-compatible and PostgreSQL-compatible databases, which still covers TPC-C and TPC-H on MySQL. Extra workloads and PostgreSQL support are additions, not corrections. The two inline TPC links in the entry must be preserved."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": "Source or watched-source coverage changed since research.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "59",
+        "name": "Percona Xtrabackup",
+        "url": "https://github.com/percona/percona-xtrabackup",
+        "description": "an open-source hot backup utility for MySQL - based servers that doesn\u2019t lock your database during the backup.",
+        "section": "Backup",
+        "line": "- [Percona Xtrabackup](https://github.com/percona/percona-xtrabackup) - an open-source hot backup utility for MySQL - based servers that doesn\u2019t lock your database during the backup.",
+        "changeReason": "fetch-incomplete"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "'Percona XtraBackup is an open-source hot backup utility for MySQL - based servers that doesn't lock your database during the backup.' Covers 8.0 and 2.4 lines.",
+            "url": "https://raw.githubusercontent.com/percona/percona-xtrabackup/trunk/README.md"
+          },
+          {
+            "observation": "Page loads with defaultBranch 'trunk' and no archived banner. git ls-remote shows branches trunk, 8.0 and 2.4, and tags up to percona-xtrabackup-9.7.2-2.",
+            "url": "https://github.com/percona/percona-xtrabackup"
+          }
+        ],
+        "id": "59",
+        "limitations": [
+          "The GitHub API was rate-limited for this repo, so licence and archived status come from the repo page and README rather than API metadata.",
+          "Legacy branches 2.4 and 8.0 exist. I did not determine their individual maintenance status from their existence alone."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The packet snapshot failed, so I checked directly. percona/percona-xtrabackup is reachable, not archived, has default branch trunk, and has recent release tags (latest percona-xtrabackup-9.7.2-2). Its README opens with 'Percona XtraBackup is an open-source hot backup utility for MySQL - based servers that doesn't lock your database during the backup', which is identical to the entry's description."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": false,
+      "independentAudit": null,
+      "baselineHoldReason": "Source snapshot unavailable.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "70",
+        "name": "TPCC-MySQL",
+        "url": "https://github.com/Percona-Lab/tpcc-mysql",
+        "description": "A port of the popular [TPCC](http://www.tpc.org/tpcc/) benchmark for MySQL.",
+        "section": "Benchmarking",
+        "line": "- [TPCC-MySQL](https://github.com/Percona-Lab/tpcc-mysql) (archived) - A port of the popular [TPCC](http://www.tpc.org/tpcc/) benchmark for MySQL.",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "README documents building with mysql_config, loading data with tpcc_load (warehouses), and running tpcc_start against MySQL with New Order throughput and latency output. No successor or deprecation note.",
+            "url": "https://raw.githubusercontent.com/Percona-Lab/tpcc-mysql/master/README.md"
+          },
+          {
+            "observation": "Returned 404; no LICENSE file at that path, so the licence was not verified.",
+            "url": "https://raw.githubusercontent.com/Percona-Lab/tpcc-mysql/master/LICENSE"
+          }
+        ],
+        "id": "70",
+        "limitations": [
+          "Archived and unmaintained, which is in tension with the 'Code must not be abandoned' rule; a maintainer discussion question, not proven unsuitability.",
+          "Licence not verified (no LICENSE file at repo root; GitHub API rate-limited)."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "Repository Percona-Lab/tpcc-mysql is archived (per snapshot), and the catalog line already marks it '(archived)'. The README still documents building and running a TPC-C-like benchmark against MySQL (tpcc_load, tpcc_start), so the description is accurate. No official discontinuation notice or documented successor was found. Archive status alone does not justify removal, but the maintainer may weigh it against the 'not abandoned' rule."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": "Source or watched-source coverage changed since research.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "102",
+        "name": "MySQL C API",
+        "url": "https://dev.mysql.com/downloads/c-api/",
+        "description": "Official C driver for MySQL.",
+        "section": "Connectors",
+        "line": "- [MySQL C API](https://dev.mysql.com/downloads/c-api/) - Official C driver for MySQL.",
+        "changeReason": "fetch-incomplete"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Page title 'MySQL :: Download C API (libmysqlclient)'; 'C API (libmysqlclient) is a client library for C development'; 'C API (libmysqlclient) is included in MySQL 8.0'; recommends Connector/C++ for X DevAPI.",
+            "url": "https://dev.mysql.com/downloads/c-api/"
+          }
+        ],
+        "id": "102",
+        "limitations": [
+          "The page text references MySQL 8.0 and older; it may lag current 8.4/9.x releases, but libmysqlclient remains the official C client library."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The URL resolves (HTTP 200) to the official MySQL 'Download C API (libmysqlclient)' page, which states 'C API (libmysqlclient) is a client library for C development' and that it is included in MySQL 8.0 distributions. 'Official C driver for MySQL' is supported. The packet snapshot failure was transient or tool-specific."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": false,
+      "independentAudit": null,
+      "baselineHoldReason": "Source snapshot unavailable.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "196",
+        "name": "sys",
+        "url": "https://github.com/mysql/mysql-sys",
+        "description": "A collection of views, functions and procedures to help MySQL administrators get insight in to MySQL Database usage. See [sys schema docs](https://dev.mysql.com/doc/refman/8.4/en/sys-schema.html)",
+        "section": "Schema",
+        "line": "- [sys](https://github.com/mysql/mysql-sys) (archived) - A collection of views, functions and procedures to help MySQL administrators get insight in to MySQL Database usage. See [sys schema docs](https://dev.mysql.com/doc/refman/8.4/en/sys-schema.html)",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "'A collection of views, functions and procedures to help MySQL administrators get insight in to MySQL Database usage.' Install files for 5.6 and 5.7.",
+            "url": "https://raw.githubusercontent.com/mysql/mysql-sys/master/README.md"
+          },
+          {
+            "observation": "Returns HTTP 200.",
+            "url": "https://dev.mysql.com/doc/refman/8.4/en/sys-schema.html"
+          },
+          {
+            "observation": "Canonical mysql/mysql-sys, archived. Description: 'The MySQL sys schema'.",
+            "url": "https://github.com/mysql/mysql-sys"
+          }
+        ],
+        "id": "196",
+        "limitations": [
+          "The entry has a second link (the docs link), which the one-link rule discourages. That is pre-existing formatting and should be preserved."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "mysql/mysql-sys is archived, and the entry already says so. Its README matches the description word for word. The sys schema itself ships with MySQL, and the linked 8.4 sys schema docs page loads. The entry is a deliberately annotated historical resource with a pointer to current docs."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": "Source unavailable at final recheck.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "212",
+        "name": "MySQL Server & MySQL Cluster",
+        "url": "https://github.com/mysql/mysql-server",
+        "description": "Official Oracle's MySQL server & MySQL Cluster distribution.",
+        "section": "Server",
+        "line": "- [MySQL Server & MySQL Cluster](https://github.com/mysql/mysql-server) - Official Oracle's MySQL server & MySQL Cluster distribution.",
+        "changeReason": "fetch-incomplete"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "HTTP 200. Title: 'mysql/mysql-server: MySQL Server, the world's most popular open source database, and MySQL Cluster, a real-time, open source transactional database.'",
+            "url": "https://github.com/mysql/mysql-server"
+          },
+          {
+            "observation": "'This is a release of MySQL, an SQL database server\u2026 brought to you by the MySQL team at Oracle', copyright 2000\u20132026.",
+            "url": "https://raw.githubusercontent.com/mysql/mysql-server/trunk/README"
+          }
+        ],
+        "id": "212",
+        "limitations": [
+          "Did not enumerate the repo's NDB/Cluster sources directly. That claim rests on GitHub's repo title."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The packet's snapshot fetch failed, but the repo loads. GitHub's title describes it as MySQL Server and MySQL Cluster, and the README identifies it as Oracle's MySQL release. The description is accurate."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": false,
+      "independentAudit": null,
+      "baselineHoldReason": "Source snapshot unavailable.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "181",
+        "name": "MySQL Router",
+        "url": "https://dev.mysql.com/doc/mysql-router/en/",
+        "description": "MySQL Router is part of InnoDB cluster, and is a lightweight middleware that provides transparent routing between your application and back-end MySQL Servers.",
+        "section": "Proxy",
+        "line": "- [MySQL Router](https://dev.mysql.com/doc/mysql-router/en/) - MySQL Router is part of InnoDB cluster, and is a lightweight middleware that provides transparent routing between your application and back-end MySQL Servers.",
+        "changeReason": "fetch-incomplete"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "Redirects to https://dev.mysql.com/doc/mysql-router/26.10/en/ (HTTP 200, title 'MySQL :: MySQL Router 26.10').",
+            "url": "https://dev.mysql.com/doc/mysql-router/en/"
+          },
+          {
+            "observation": "Contains 'MySQL Router is part of InnoDB Cluster and is lightweight middleware'.",
+            "url": "https://dev.mysql.com/doc/mysql-router/26.10/en/mysql-router-innodb-cluster.html"
+          },
+          {
+            "observation": "'MySQL Router is a building block for high availability (HA) solutions\u2026 routing connections to MySQL servers.'",
+            "url": "https://dev.mysql.com/doc/mysql-router/26.10/en/mysql-router-general.html"
+          }
+        ],
+        "id": "181",
+        "limitations": [
+          "The entry links to documentation, which the guidelines discourage. Router source lives in mysql/mysql-server under router/. Changing the URL is optional and up to the maintainer."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "The packet's snapshot fetch failed, but the URL loads and redirects to the current MySQL Router 26.10 manual. The official docs say 'MySQL Router is part of InnoDB Cluster and is lightweight middleware', which matches the description."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": false,
+      "independentAudit": null,
+      "baselineHoldReason": "Source snapshot unavailable.",
+      "originalAssessment": null
+    },
+    {
+      "entry": {
+        "id": "247",
+        "name": "SQL-exercise",
+        "url": "https://github.com/XD-DENG/SQL-exercise",
+        "description": "contains several SQL exercises, including the schema description figure, SQL code to build schema, questions and solutions in SQL. Based on wikibook [SQL Exercises](https://en.wikibooks.org/wiki/SQL_Exercises).",
+        "section": "e-books",
+        "line": "- [SQL-exercise](https://github.com/XD-DENG/SQL-exercise) - contains several SQL exercises, including the schema description figure, SQL code to build schema, questions and solutions in SQL. Based on wikibook [SQL Exercises](https://en.wikibooks.org/wiki/SQL_Exercises).",
+        "changeReason": "not-reviewed"
+      },
+      "assessment": {
+        "action": "keep",
+        "blockers": [],
+        "evidence": [
+          {
+            "observation": "README: schemas and questions come from Wikibook \"SQL Exercises\" (exercises 1-8), with 9-10 added by the author. The structure shows SQL_exercise_*/ containing *_schema_figure.png, *_build_schema.sql and *_questions_and_solutions.sql. License: CC BY-SA 3.0.",
+            "url": "https://raw.githubusercontent.com/XD-DENG/SQL-exercise/master/README.md"
+          }
+        ],
+        "id": "247",
+        "limitations": [
+          "Did not verify that the embedded Wikibooks link is still reachable."
+        ],
+        "newDescription": null,
+        "newName": null,
+        "newUrl": null,
+        "reason": "XD-DENG/SQL-exercise resolves directly. The README says the schemas and questions come from the Wikibook SQL Exercises, with additional exercises by the author. Each exercise folder contains a schema figure (.png), a build-schema SQL file and a questions-and-solutions SQL file, exactly as the entry says. It's free to access under CC BY-SA 3.0, which fits the e-books section rules."
+      },
+      "preview": null,
+      "previewHold": null,
+      "snapshotComplete": true,
+      "independentAudit": null,
+      "baselineHoldReason": "Source or watched-source coverage changed since research.",
+      "originalAssessment": null
+    }
+  ]
+}
