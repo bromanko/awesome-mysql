@@ -1,2 +1,5 @@
 _site
 .ruby-version
+
+.um/freshness/work/
+__pycache__/
