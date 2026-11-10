@@ -115,7 +115,7 @@ class Validator:
             before_links = links(self.before['links'],self.base)
             after_links = links(after['links'],folder)
             old_lines = {e['line'] for e in ci.entries(self.readme)}
-            relevant = [e['url'] for e in ci.entries(changed) if e['line'] not in old_lines]
+            relevant = [url for e in ci.entries(changed) if e['line'] not in old_lines for url in ci.linked_urls(e)]
             result['links'] = compare_links(before_links,after_links,relevant)
             result['passed'] = result['links']['passed']
             result['reason'] = ('Checks passed; existing unrelated link failures are listed separately.' if result['passed']

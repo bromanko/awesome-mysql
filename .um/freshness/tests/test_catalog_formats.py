@@ -67,3 +67,14 @@ class CatalogFormatTests(unittest.TestCase):
     def test_removal_does_not_orphan_nested_content(self):
         text='# Tools\n- [Parent](https://example.com) - Tool.\n\n  More information about the tool.\n'
         self.assertEqual([],self.proposal(text,action='remove'))
+
+    def test_url_only_update_preserves_existing_name_and_whitespace(self):
+        text='# Tools\n- [Tool (Legacy)](https://example.com) - Description.  \n'
+        proposal=self.proposal(text,newUrl='https://new.example')
+        self.assertIn('+\u002d [Tool (Legacy)](https://new.example) - Description.  \n',proposal[0]['patch'])
+
+    def test_companion_destination_requires_success(self):
+        import checks
+        entry=ci.entries('- [Tool](https://example.com) - [Docs](https://docs.example).')[0]
+        result=checks.compare_links(dict(errors=[]),dict(errors=[],excluded=['https://docs.example'],successful=['https://example.com']),ci.linked_urls(entry))
+        self.assertFalse(result['passed'])

@@ -88,9 +88,7 @@ def source_snapshot(entry):
 
 def snapshot(entry):
     # Watch linked companion resources as well as the primary catalog identity.
-    line = entry.get('line', '')
-    heading = line
-    urls = list(dict.fromkeys([entry['url']] + re.findall(r'\]\((https?://[^)]+)\)', heading)))
+    urls = ci.linked_urls(entry)
     snapshots = [source_snapshot(dict(entry, url=url)) for url in urls]
     if len(snapshots) == 1:
         return snapshots[0]
