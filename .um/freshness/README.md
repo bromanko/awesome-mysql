@@ -36,9 +36,9 @@ flowchart TD
   validateCorrections --> renderPreview[Report, checked patches and proposed baseline]
 ```
 
-The initial baseline is empty; it does not claim any completed reviews. After
-reviewing the first run, save its baseline so unchanged entries need no model calls. Without a baseline, the first run researches every entry with a
-complete source snapshot. Unresolved findings and unavailable sources stay pending.
+The included baseline saves the completed initial reviews, so unchanged entries
+need no model calls. New or changed entries are researched; unavailable sources
+and unresolved findings remain pending.
 Only supported keep decisions with stable snapshots become completed reviews.
 After accepting a correction, the corrected entry must be reviewed before it can
 join the baseline. Adding or moving other entries does not invalidate a review.
