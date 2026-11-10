@@ -58,3 +58,12 @@ class CatalogFormatTests(unittest.TestCase):
         self.assertTrue(value['complete'])
         self.assertEqual(fetch.call_count,2)
         self.assertEqual(value['source']['sources'][1]['url'],'https://child.example')
+
+    def test_description_must_preserve_companion_links(self):
+        text='# Tools\n- [Parent](https://example.com) - Uses [Child](https://child.example).\n'
+        self.assertEqual([],self.proposal(text,newDescription='Tool.'))
+        self.assertEqual(1,len(self.proposal(text,newDescription='Supports [Child](https://child.example).')))
+
+    def test_removal_does_not_orphan_nested_content(self):
+        text='# Tools\n- [Parent](https://example.com) - Tool.\n\n  More information about the tool.\n'
+        self.assertEqual([],self.proposal(text,action='remove'))

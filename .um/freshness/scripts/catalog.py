@@ -87,10 +87,9 @@ def source_snapshot(entry):
 
 
 def snapshot(entry):
-    # Linked compound identities (for example an organization and its exporter)
-    # must watch both sources, not only the first link on the catalog line.
+    # Watch linked companion resources as well as the primary catalog identity.
     line = entry.get('line', '')
-    heading = line.split(' - ', 1)[0]
+    heading = line
     urls = list(dict.fromkeys([entry['url']] + re.findall(r'\]\((https?://[^)]+)\)', heading)))
     snapshots = [source_snapshot(dict(entry, url=url)) for url in urls]
     if len(snapshots) == 1:

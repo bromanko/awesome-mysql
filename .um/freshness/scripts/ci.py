@@ -133,6 +133,21 @@ def patch_text(before, after):
     return ''.join(line if line.endswith('\n') else line + '\n\\ No newline at end of file\n' for line in chunks)
 
 
+def layout_blocker(entry, row, readme):
+    companions = set(re.findall(r'\]\((https?://[^)]+)\)', entry['line'])[1:])
+    if row['action'] == 'remove' and companions:
+        return True
+    if row.get('newDescription'):
+        preserved = set(re.findall(r'\]\((https?://[^)]+)\)', row['newDescription']))
+        if companions - preserved:
+            return True
+    if row['action'] == 'remove' or row.get('newName'):
+        following = next((line for line in readme.splitlines()[int(entry['id']):] if line.strip()), '')
+        if following and len(following) - len(following.lstrip()) > len(entry['line']) - len(entry['line'].lstrip()):
+            return True
+    return False
+
+
 def previews(data, raw, status):
     """Build one reviewable proposal per entry; never alter the checkout."""
     results = validate(data, raw)
@@ -157,6 +172,9 @@ def previews(data, raw, status):
         offset = int(entry['id']) - 1
         if offset < 0 or offset >= len(lines) or lines[offset].rstrip('\r\n') != entry['line']:
             raise ValueError('Selected entry no longer matches its pinned line')
+        if layout_blocker(entry, row, readme):
+            held += 1
+            continue
         if row['action'] == 'remove':
             del lines[offset]
         else:
